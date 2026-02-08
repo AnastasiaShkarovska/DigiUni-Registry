@@ -1,8 +1,8 @@
 package ua.university.domain;
 import ua.university.domain.enums.StudentStatus;
 import ua.university.domain.enums.StudyForm;
-
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Student extends Person {
     private final String studentId;
@@ -25,25 +25,20 @@ public class Student extends Person {
         this.studyForm = studyForm;
         this.status = status;
     }
-
     public String getStudentId() {
         return studentId;
     }
-
-    public int getCourse() {
-        return course;
-    }
-
     public String getGroup() {
         return group;
     }
-
-    public int getEntryYear() {
-        return entryYear;
+    public void setGroup(String group) {
+        this.group = group;
     }
-
-    public StudyForm getStudyForm() {
-        return studyForm;
+    public int  getCourse() {
+        return course;
+    }
+    public void setCourse(Student course) {
+        this.course = course.getCourse();
     }
 
     public StudentStatus getStatus() {
@@ -55,15 +50,27 @@ public class Student extends Person {
         this.course = course;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
-    }
-
-    public void setStudyForm(StudyForm studyForm) {
-        this.studyForm = studyForm;
-    }
-
     public void setStatus(StudentStatus status) {
         this.status = status;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (!super.equals(o)) return false;
+        Student student = (Student) o;
+        return group == student.group &&
+                entryYear == student.entryYear&&
+                Objects.equals(studyForm, student.studyForm) &&
+                Objects.equals(status, student.status);
+    }
+
+    @Override
+    public String toString() {
+         return "Student{" +
+                ", studentId=" + studentId +
+                ", course=" + course +
+                ", group=" + group +
+                ", entryYear=" + entryYear +
+                ", studyForm=" + studyForm +
+                ", status=" + status;
     }
 }
