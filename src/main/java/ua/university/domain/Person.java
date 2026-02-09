@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public abstract class Person {
     private String id;
-    private  String lastName;
-    private  String firstName;
-    private  String middleName;
+    private String lastName;
+    private String firstName;
+    private String middleName;
     private LocalDate birthDate;
     private String email;
     private String phone;
@@ -34,7 +34,7 @@ public abstract class Person {
         return lastName;
     }
 
-    public void setFullName(String fullName) {
+    public void setLastName(String fullName) {
         this.lastName = lastName;
     }
 
